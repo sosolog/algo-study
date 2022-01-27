@@ -1,0 +1,24 @@
+from sys import stdin
+_ = stdin.readline()
+N = sorted(map(int,stdin.readline().split()))
+_ = stdin.readline()
+M = map(int,stdin.readline().split())
+left =0
+right = len(N)-1
+list = []
+mid = (left+right)//2
+for m in M:
+    while m !=N[mid]:
+        if left >=right:
+            d=0
+            break
+        elif m == N[mid]:
+            d= N[left:right+1].count(m)
+        elif m < N[mid]:
+            right = mid-1
+        elif m > N[mid]:
+            left = mid+1
+    list.append(d)
+    print(' '.join(str(list)))
+
+
