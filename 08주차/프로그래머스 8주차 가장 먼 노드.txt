@@ -1,0 +1,22 @@
+from collections import deque
+def solution(n, edge):
+    xxx = 0
+    answer = [-1] * (n+1)
+    X = 1
+    answer[X] = 0
+    graph = [[] for _ in range(n+1)]
+    for a, b in edge:
+        graph[a].append(b)
+        graph[b].append(a)
+    q = deque([X])
+    while q:
+        start = q.popleft()
+        for i in graph[start]:
+            if answer[i] == -1:
+                answer[i] = answer[start] + 1
+                q.append(i)
+    max_answer = max(answer)
+    for i in answer:
+        if i == max_answer:
+            xxx += 1
+    return xxx

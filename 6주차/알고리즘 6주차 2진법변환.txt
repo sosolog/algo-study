@@ -1,0 +1,12 @@
+def binary(n):
+    if n > 1:
+        if n % 2 == 1:
+            return binary(n//2)+'1'
+        if n % 2 == 0:
+            return binary(n//2)+'0'
+    else:
+        return '1'
+    
+x = int(input())
+print(int(binary(x)))
+        
